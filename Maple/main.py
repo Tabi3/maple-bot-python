@@ -1,2 +1,1 @@
-import nextcord, extra_functions
-extra_functions.myClient(intents=nextcord.Intents.all()) if __name__ == '__main__' else 0
+__import__("extra_functions").myClient(intents = __import__("nextcord").Intents.all()) if __name__  == "__main__" else ... 

@@ -5,7 +5,8 @@ from nextcord.ext import commands
 class TestKit(commands.Cog):
     """Testing Kit For Maple (Developer tools)"""
 
-    def __init__(   self, client):
+    
+    def __init__(self, client):
         self.client = client
 
     @commands.command(aliases=['lp'])
@@ -24,7 +25,7 @@ class TestKit(commands.Cog):
         self.client.reload_extension(f'cogs.prefix_commands.{extension}')
         
     @commands.command(aliases=["rla"])
-    async def reload_all(self, _,):
+    async def reload_all(self, _):
         "Reloads all extensions"
         self.client.reload_all()
         

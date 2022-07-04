@@ -13,7 +13,7 @@ class Listeners(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         print(f"[{message.guild.name}]<{message.author}>:"
-              f" {message.content}")
+              f" {message.content} ")
 
 
 def setup(self):

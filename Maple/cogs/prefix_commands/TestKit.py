@@ -1,4 +1,5 @@
 from operator import index
+from pydoc import pager
 from nextcord.ext import commands
 from Maple_bot_functions.MapleWebScraper import WolframQuery
 from Maple_bot_functions.MapleUi import *
@@ -31,10 +32,9 @@ class TestKit(commands.Cog):
         self.client.reload_all()
     
     @nextcord.slash_command(guild_ids=[954299107881660456])
-    async def test(self, interaction: nextcord.Interaction):
-        await interaction.response.send_message('Testing Success')
-            
-
+    async def test(self, interaction: nextcord.Interaction, tags: str = "straight", straight: bool = True):
+        await interaction.response.send_message(content='Testing Success')
+        
 
 
 def setup(self):

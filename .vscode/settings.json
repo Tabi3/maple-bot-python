@@ -4,5 +4,8 @@
     "python.formatting.blackArgs": [
         "--line-length=120"
     ],
-    "terminal.integrated.scrollback": 10000
+    "terminal.integrated.scrollback": 10000,
+    "editor.cursorSmoothCaretAnimation": true,
+    "workbench.list.smoothScrolling": true,
+    "editor.smoothScrolling": true
 }

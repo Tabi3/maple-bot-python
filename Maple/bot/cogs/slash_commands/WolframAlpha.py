@@ -4,10 +4,6 @@ class WolframAlpha(nextcord.ext.commands.Cog):
     def __init__(self, client) -> None:
         self.client = client
     
-    @nextcord.ext.commands.command()
-    async def askwolfram(self, ctx, query = ...):
-        await ctx.send("This command is a slash command")
-    
     @nextcord.slash_command(name="askwolfram",guild_ids=[954299107881660456, 981995559944605736])
     async def aw(self, interaction: nextcord.Interaction, query: str):
         await interaction.response.send_message('Wait until we finish', ephemeral=True)

@@ -134,21 +134,27 @@ async def wolfram_query():
     await asyncio.sleep(9)
     return wolfram_query.myDict
 
+globals()['05a491dc-08b2-41f6-9ba0-848b991147fb'] = None
+
 @app.route("/flask/start_maple", methods=["POST"])
 async def start_maple():
+    if globals()['05a491dc-08b2-41f6-9ba0-848b991147fb']:
+        return jsonify(msg="Already running"), 503
     subprocess = __import__("subprocess")
     globals()["05a491dc-08b2-41f6-9ba0-848b991147fb"] = subprocess.Popen(["c:/Users/Neon/Desktop/Python Projects/New "
                           "Maple/maple-bot-python/Maple/Scripts/python.exe",
                           './Maple/bot/main.py'], shell=True)
-    return 200
+    return jsonify(msg="Success"), 200
 
 @app.route("/flask/stop_maple", methods=["POST"])
-async def start_maple():
+async def stop_maple():
+    if not globals()['05a491dc-08b2-41f6-9ba0-848b991147fb']:
+        return jsonify(msg="Not running"), 503
     subprocess = __import__("subprocess")
     subprocess.Popen(f"TASKKILL /F /PID {globals()['05a491dc-08b2-41f6-9ba0-848b991147fb'].pid} /T")
-    globals().pop('05a491dc-08b2-41f6-9ba0-848b991147fb')
+    globals()['05a491dc-08b2-41f6-9ba0-848b991147fb'] = None
     
-    return 200
+    return jsonify(msg="Success"), 200
 
 
 

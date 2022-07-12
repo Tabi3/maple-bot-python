@@ -1,5 +1,7 @@
+from email import header
 from operator import index
 from pydoc import pager
+from wsgiref import headers
 from nextcord.ext import commands
 from Maple_bot_functions.MapleWebScraper import WolframQuery
 from Maple_bot_functions.MapleUi import *
@@ -30,11 +32,15 @@ class TestKit(commands.Cog):
     async def reload_all(self, _):
         "Reloads all extensions"
         self.client.reload_all()
-    
+
     @nextcord.slash_command(guild_ids=[954299107881660456])
     async def test(self, interaction: nextcord.Interaction, tags: str = "straight", straight: bool = True):
         await interaction.response.send_message(content='Testing Success')
-        
+
+    @nextcord.slash_command(guild_ids=[954299107881660456])
+    async def test2(self, interaction: nextcord.Interaction, url: str, body: str):
+        await interaction.response.send_message(content='Testing')
+        await interaction.followup.send(content=__import__("requests").post(url, json=json.loads(body), headers={"Content-Type": "application/json"}).text)
 
 
 def setup(self):

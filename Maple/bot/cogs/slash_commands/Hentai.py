@@ -6,14 +6,6 @@ class HentaiCommands(nextcord.ext.commands.Cog):
     def __init__(self, client) -> None:
         self.client = client
 
-    @nextcord.ext.commands.command()
-    async def hentaihaven(self, ctx):
-        await ctx.send("This command is a slash command")
-    
-    @nextcord.ext.commands.command()
-    async def rule34(self, ctx):
-        await ctx.send("This command is a slash command")
-
     @nextcord.slash_command(name="hentaihaven", guild_ids=[954299107881660456, 981995559944605736])
     async def _(self, interaction: nextcord.Interaction):
         await interaction.response.send_message(embed=nextcord.Embed(title="Hentai Haven", color = 0x2D142C,

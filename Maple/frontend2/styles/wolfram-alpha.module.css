@@ -1,0 +1,104 @@
+.wolfram-form {
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    width: calc(75% - 2rem);
+    height: 20rem;
+    margin: 1rem;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 63px;
+}
+
+.pods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.PodButton {
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    padding: 1rem;
+    padding-left: 1rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #c72c41;
+}
+
+.PodButton:hover {
+    cursor: pointer;
+}
+
+.PodButton::before {
+    content: '>';
+    margin-right: 1rem;
+    display: inline-block;
+    transition: all 0.2s ease-out;
+}
+
+.expanded::before {
+    content: '>';
+    margin-right: 1rem;
+    display: inline-block;
+    transition: all 0.2s ease-out;
+    transform: rotate(90deg) !important;
+}
+
+.pod {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    box-shadow: 0rem 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+.pod * {
+    margin: 1rem;
+}
+
+.search-field {
+    font-family: inherit;
+    border: 0;
+    height: 100%;
+    padding-left: 2rem;
+}
+
+.search-field:hover {
+    transform: scale(1.01);
+}
+
+.submit-form {
+    background-color: #c72c41;
+    border: 0;
+}
+
+.submit-form:hover {
+    cursor:pointer;
+}
+
+.search-bar {
+    display: grid;
+    margin: 1rem 0rem;
+    grid-template-columns: 9fr 1fr;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 1080px) {
+    .wolfram-form {
+        width: 100%;
+        margin: 0;
+    }
+    .pods {
+        display: flex;
+        flex-direction: column;
+    }
+}

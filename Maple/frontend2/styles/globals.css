@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&family=Poppins:wght@500&display=swap");
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Comfortaa", cursive;
+    font-family: "Poppins", sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button,
+input {
+    transition: all 0.2s ease-in;
+    width: 100%;
+    font-family: inherit;
+    text-align: left;
+    background-color: #fff;
+    border: none;
+    padding: 1rem;
+    padding-left: 1rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #c72c41;
+}
+
+button:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1080px) {
+    * {
+        font-size: 1rem;
+    }
+}

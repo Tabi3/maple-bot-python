@@ -1,0 +1,125 @@
+.card_link {
+    position: relative;
+    cursor: pointer;
+    height: 22rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-out;
+}
+
+.card_link div {
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease-out;
+}
+
+.card_link div .maindiv {
+    position: absolute;
+    overflow-y: scroll;
+    width: calc(100% - 2rem);
+    height: calc(100% - 7rem);
+    top: 0;
+    opacity: 0;
+    margin: 1rem;
+    transition: all 0.2s ease-out;
+}
+.card_link div img {
+    width: 100%;
+    aspect-ratio: 16/8;
+    object-fit: cover;
+    transition: all 0.2s ease-out;
+}
+
+.card_link:hover div .maindiv {
+    opacity: 1;
+}
+
+.card_link:hover img,
+.card_link:hover hr {
+    filter: blur(1px) contrast(25%) brightness(1.4);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 22rem;
+    gap: 2rem;
+    width: 100%;
+}
+
+.cardsContainer {
+    padding: 1rem;
+    width: calc(100% - 50rem);
+    padding: 2rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1520px) {
+    .cards {
+        display: flex;
+        flex-direction: column;
+    }
+    .card_link{
+        height: 15rem !important;
+    }
+    .card_link div .maindiv {
+        height: 60%;
+    }
+}
+@media screen and (max-width: 1300px) {
+    .card_link{
+        height: 30rem !important;
+    }
+    .cardsContainer {
+        width: 60%;
+    }
+    .card_link div .maindiv {
+        height: 40%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .card_link{
+        min-height: 35rem !important;
+    }
+    .cardsContainer {
+        width: 100%;
+    }
+    .card_link div .maindiv {
+        height: 30%;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .card_link{
+        min-height: 20rem !important;
+    }
+    .cardsContainer {
+        width: 100%;
+    }
+    .card_link div .maindiv {
+        height: 100% !important;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .card_link{
+        max-height: 3rem !important;
+    }
+    .cardsContainer {
+        width: 100%;
+    }
+    .card_link div .maindiv {
+        height: 50% !important;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .card_link{
+        height: 25rem !important;
+    }
+    .card_link div .maindiv {
+        height: 25%;
+    }
+}

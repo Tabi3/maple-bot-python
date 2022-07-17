@@ -1,7 +1,4 @@
-from email import header
-from operator import index
-from pydoc import pager
-from wsgiref import headers
+
 from nextcord.ext import commands
 from Maple_bot_functions.MapleWebScraper import WolframQuery
 from Maple_bot_functions.MapleUi import *
@@ -12,6 +9,7 @@ class TestKit(commands.Cog):
 
     def __init__(self, client):
         self.client = client
+        self.__cog_name__ = "Test Kit"
 
     @commands.command(aliases=["lp"])
     async def load_prefixed(self, _, extension: str):

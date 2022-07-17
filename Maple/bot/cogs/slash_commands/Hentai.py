@@ -2,11 +2,13 @@ from Maple_bot_functions import *
 
 
 class HentaiCommands(nextcord.ext.commands.Cog):
-
+    """The list of usable hentai commands"""
+    
     def __init__(self, client) -> None:
         self.client = client
-
-    @nextcord.slash_command(name="hentaihaven", guild_ids=[954299107881660456, 981995559944605736])
+        self.__cog_name__ = "Hentai Commands"
+        
+    @nextcord.slash_command(name="hentaihaven", guild_ids=[954299107881660456, 981995559944605736, 710865327008776274])
     async def _(self, interaction: nextcord.Interaction):
         await interaction.response.send_message(embed=nextcord.Embed(title="Hentai Haven", color = 0x2D142C,
                                                 description="Horny nigga detected"

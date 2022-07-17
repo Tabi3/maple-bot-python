@@ -15,7 +15,7 @@ class Help(nextcord.ext.commands.Cog):
                                                                     "`/<command name> <args>`")
         await ctx.send(embed=embed, view=View(item=HelpSelect(self.client)))
     
-    @nextcord.slash_command(guild_ids=[954299107881660456])
+    @nextcord.slash_command(guild_ids=[954299107881660456, 710865327008776274])
     async def help(self, interaction: nextcord.Interaction) -> None:
         prefix = self.client.command_prefix(..., interaction)
         embed = nextcord.Embed(title="Bot Help", 

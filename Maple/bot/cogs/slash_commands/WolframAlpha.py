@@ -1,10 +1,13 @@
 from Maple_bot_functions import *
 
 class WolframAlpha(nextcord.ext.commands.Cog):
+    """Commands for using Wolfram Alpha"""
+    
     def __init__(self, client) -> None:
         self.client = client
+        self.__cog_name__ = "Wolfram Alpha"
     
-    @nextcord.slash_command(name="askwolfram",guild_ids=[954299107881660456, 981995559944605736])
+    @nextcord.slash_command(name="askwolfram",guild_ids=[954299107881660456, 981995559944605736, 710865327008776274])
     async def aw(self, interaction: nextcord.Interaction, query: str):
         await interaction.response.send_message('Wait until we finish', ephemeral=True)
         myDict, site = WolframQuery(query)

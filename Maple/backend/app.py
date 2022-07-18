@@ -1,20 +1,11 @@
-import contextlib
-import json
-import asyncio
-from http import cookies
+import contextlib, json, asyncio, uuid, requests, datetime
 from bs4 import BeautifulSoup
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS, cross_origin
 from pyppeteer import launch
-import uuid
-import datetime
 
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
-import requests
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
 
 
 app = Flask(__name__)
@@ -146,7 +137,7 @@ async def wolfram_query():
     cdp.on('Network.webSocketFrameSent', wolframupdates)
     await asyncio.sleep(9)
     await browser.close()
-    return jsonify(wolfram_query.myDict)
+    return wolfram_query.myDict
 
 globals()["619362be-2b10-45be-bf89-46ddd498cfe8"] = None
 

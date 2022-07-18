@@ -1,4 +1,4 @@
-import NavBar from "../navbar"
+import NavBar from "../navbar.js"
 import styles from "../../styles/sidebar.module.css"
 import KhubCard from "../../MyComponents/KhubCard.js"
 import wolfram_styles from "../../styles/wolfram-alpha.module.css"
@@ -20,7 +20,7 @@ export default function KhubHome({ li }) {
             <div className={wolfram_styles.container} style={{ justifyContent: 'center' }}>
                 <div className={cardStyles.cardsContainer}>
                     <div style={{ width: '100%', height: '3rem', marginBottom: '2rem', display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={{marginRight: '2rem'}}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style={{ marginRight: '2rem' }}>
                             <path d="M3 5v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.806 5 19s.55-.988 1.012-1H21V4c0-1.103-.897-2-2-2H6c-1.206 0-3 .799-3 3z"></path>
                         </svg>
                         Courses
@@ -43,15 +43,42 @@ export default function KhubHome({ li }) {
     </>
 }
 
-export let getServerSideProps = async () => {
-    const req = await fetch("http://localhost:5000/flask/khub", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 'cookie': { 'name': 'MoodleSession', 'value': 'mi3h5dqe19bm6lpekmkn9ld9m5' } })
-    })
+export let getServerSideProps = async (context) => {
+    let getNewSession = async (ctx) => {
+        let res = await fetch('http://localhost:5000/flask/khub-login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({login: [undefined]})
+        })
+        let data = await res.json()
+        console.log(data.cookie.value)
+        return data.cookie.value
+    }
+    let _cookies = context.req.headers.cookie.split(';')
+    let cookies = {}
+    for (let i = 0; i < _cookies.length; i++) {
+        console.log(_cookies)
+        let j = _cookies[i].indexOf('=')
+        cookies[_cookies[i].slice(0, j)] = _cookies[i].slice(j+1)
+    }
 
-    const data = await req.json()
-    console.log(data)
+    let getCourses = async (Session) => {
+        return await fetch("http://localhost:5000/flask/khub", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 'cookie': { 'name': 'MoodleSession', 'value': Session } })
+        })
+    }
+    let req = await getCourses(cookies['MoodleSession'])
+    let data
+    try {
+        data = await req.json()
+    } catch (err) {
+        let session = await getNewSession()
+        context.res.setHeader('set-cookie', `MoodleSession=${session}`)
+        req = await getCourses(session)
+        data = await req.json()
+    }
 
     return {
         props: { li: data }
